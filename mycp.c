@@ -17,28 +17,30 @@ int main(int argc, char* argv[])
 		exit(1);
 	}
 
-	if ((fd_r = /* argv[1]을 읽기 모드로 열기 */) == -1) {
+	
+	if ((fd_r = open(argv[1], O_RDONLY)) == -1) {
 		perror(argv[1]);
 		exit(2);
 	}
 
-	if ((fd_w = /* argv[2]를 쓰기 모드로 열기 */) == -1) {
+	if ((fd_w = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC)) == -1) {
 		perror(argv[2]);
 		exit(3);
 	}
 
-	while (/* fd_r에서 buf로 읽어 들이기 */) {
-		if (/* fd_w에 buf예 쓰기 */ < nread) {
+	
+	while ((nread = read(fd_r, buf, BUFSIZE))>0) {
+		if (write(fd_w,buf,nread) < nread) {
 			close(fd_r);
 			close(fd_w);
 
-			perror("write error");
+			perror("File write error");
 			exit(4);
 		}
 	}
 
-	/* 모든 파일 닫기 */
-
+	close(fd_r);
+	close(fd_w);
 	if (nread == -1) {
 		perror("read error");
 		exit(5);
