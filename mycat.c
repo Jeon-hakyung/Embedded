@@ -11,15 +11,15 @@ int main(int argc, char* argv[])
 	int fd;
 	ssize_t nread;
 
-	if (/* fd = 읽기 모드로 파일 열기 */) {
+	if ((fp= fopen(argv[1], "r") ==NULL ) {
 		perror(argv[1]);
 		exit(1);
 	}
 
-	while (/* fd로부터 buf에 읽어들이기 */)
-		/* buf의 내용을 표준출력에 쓰기 */
-
-	/* 파일 닫기 */
+	while ((nread = fscanf(fp, "%[^\n]\n", buf)) != EOF) {
+			frpintf(stdout, "%s\n", buf);
+	}
+	fclose(fp);
 
 	exit(0);
 }
