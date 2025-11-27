@@ -7,8 +7,8 @@ int main(int argc, char* argv[])
         fprintf(stderr, "usage: %s <oldpath> <newpath>\n", argv[0]);
         exit(1);
     }
-
-    int rval = /* 이름 변경하기 */;
+    /* 이름 변경하기 */
+    int rval =rename(argv[1],argv[2]);
     if (rval == -1) {
         perror(argv[0]);
         exit(2);

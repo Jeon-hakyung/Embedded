@@ -9,19 +9,24 @@ int main(void)
     char buf2[10];
 
     printf("BUFSIZ=%d\n", BUFSIZ);
-
-    cwd = /* buf1에 현재 작업 경로 얻기 */
+    /* buf1에 현재 작업 경로 얻기 */
+    cwd = getcwd(buf1, BUFSIZ);
     printf("#1: [%s]\n", buf1);
     printf("#1: [%s]\n", cwd);
 
-    cwd = /* BUFSIZ 크기의 배열 동적할당하여 현재 작업 경로 저장후 반환 */
+ 
+    /* BUFSIZ 크기의 배열 동적할당하여 현재 작업 경로 저장후 반환 */
+    cwd = getcwd(NULL, BUFSIZ);
+    cwd = getcwd(NULL, BUFSIZ);
+    cwd = getcwd(NULL, BUFSIZ);
     printf("#2: [%s]\n", cwd);
     free(cwd);
-
-    cwd = /* 현재 작업 경로를 저장한 메모리를 동적할당하여 반환 */
+    /* 현재 작업 경로를 저장한 메모리를 동적할당하여 반환 */
+    cwd = getcwd(NULL, 0);
     printf("#3: [%s]\n", cwd);
     free(cwd);
 
+ 
     cwd = getcwd(buf2, 10);
     if (cwd == NULL) {
         perror("mypwd");

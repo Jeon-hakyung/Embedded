@@ -8,8 +8,8 @@ int main(int argc, char* argv[])
 		fprintf(stderr, "usage: %s <target>\n", argv[0]);
 		exit(1);
 	}
-
-	if (/* 링크해제 */ == -1) {
+	/* 링크해제 */
+	if (unlink(argv[1]) == -1) {
 		perror(argv[1]);
 		exit(2);
 	}

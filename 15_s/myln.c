@@ -9,7 +9,8 @@ int main(int argc, char* argv[])
 		exit(1);
 	}
 
-	if (/* 하드링크 생성 */ == -1) {
+	/* 하드링크 생성 */
+	if (link(argv[1],argv[2]) == -1) {
 		perror(argv[0]);
 		exit(2);
 	}

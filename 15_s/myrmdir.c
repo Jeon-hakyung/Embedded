@@ -8,8 +8,8 @@ int main(int argc, char* argv[])
 		fprintf(stderr, "usage: %s <directory>\n", argv[0]);
 		exit(1);
 	}
-
-	if (/* 대상경로의 빈 디렉터리 삭제 */ == -1) {
+	/* 대상경로의 빈 디렉터리 삭제 */
+	if ( rmdir(argv[1]) == -1) {
 		perror(argv[1]);
 		exit(2);
 	}

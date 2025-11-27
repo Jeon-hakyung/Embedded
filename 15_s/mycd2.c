@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
 
     int fd = open(argv[1], O_RDONLY);
     /* 대상 디렉터리로 작업경로 변경 */
+    fchdir(fd);
 
     cwd = getcwd(NULL, 0);
     printf("[%s]\n", cwd);
